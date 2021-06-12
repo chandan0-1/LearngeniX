@@ -1,0 +1,41 @@
+body{
+  font-family: "Montserrat", sans-serif;
+
+}
+#dashboard{
+  width:90%;
+  height: 23vh;
+  margin-left: 5%;
+  margin-top: 12vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.dashboard-div{
+  background-color: rgb(31, 128, 158);
+  box-shadow: 0px 0px 10px rgb(3, 70, 109);
+  border-radius: 10px;
+  height: 100%;
+  width: 18%;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: #7b4397;  /* fallback for old browsers */
+background: #00c6ff;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+color: white;
+text-shadow: 0px 0px 20px black;
+}
+
+span{
+text-shadow: 0px 0px 20px black;
+
+}
+h2{
+  font-size: 2.2rem;
+  letter-spacing: 4px;
+}

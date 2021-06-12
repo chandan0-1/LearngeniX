@@ -1,8 +1,16 @@
 const express = require("express")
 const router = express.Router();
 
-router.use("/student",require("./student"))
-router.use("/teacher", require("./teacher"));
+const homecntrl = require("../controller/index");
 
+
+router.use("/student",require("./student"))
+router.use("/mentor", require("./teacher"));
+
+router.get("/", homecntrl.home);
+router.get("/login",homecntrl.login);
+router.get("/register", homecntrl.register);
+
+router.get("/sign-out", homecntrl.destroySession);
 
 module.exports = router

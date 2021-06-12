@@ -1,0 +1,13 @@
+body{
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #ecc8a6;  /* fallback for old browsers */
+  /* background-image: url("https://which-50.com/wp-content/uploads/2020/04/iStock-1142819954-1183x560.jpg"); */
+  /* object-fit: fill; */
+}
+img{
+  height: 99.2vh ;
+  width: 100vw;
+}

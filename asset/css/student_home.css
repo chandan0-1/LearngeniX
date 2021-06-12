@@ -1,0 +1,98 @@
+#doubt-box{
+  padding:30px 15px;
+  margin-left: 25%;
+  margin-top: 10%;
+  width: 50%;
+  background-image: linear-gradient();
+  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: 0px 0px 15px rgb(144, 141, 141);
+  border-radius: 10px;
+  background-color: #7F7FD5;  /* fallback for old browsers */
+
+}
+
+
+body{
+  background: #2C3E50;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+padding: 0;
+margin-top: -10px;
+}
+
+#profile{
+  display: flex;
+  flex-direction: row;
+}
+
+aside{
+  position: absolute;
+  left:0;
+  background-color: rgb(59, 55, 55);
+  width: 18%;
+  height:91%;
+  top:8%;
+  /* display: flex; */
+}
+
+aside div{
+  margin: 40px 0px 50px 40px;
+}
+aside a{
+  text-shadow: 0px 0px 1px white;
+  font-size: 1.2rem;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1px;
+}
+aside a:hover{
+  text-shadow: 0px 0px 15px rgb(251, 8, 130);
+
+}
+#desc{
+  width:98%;
+  height: 10vh;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  padding-top:10px ;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px white;
+  border: 2px solid black;
+
+
+}
+
+#title{
+    width:98%;
+  height: 5vh;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-family: "Montserrat", sans-serif;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px white;
+
+}
+
+label{
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+#btn{
+  position: relative;
+  margin-left: 80%;
+  border-radius: 30px;
+  padding: 10px 30px;
+  color:white;
+  background-color: rgb(246, 6, 134);
+  border: none;
+  box-shadow: 0px 0px 15px  rgb(255, 202, 233);
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+#btn:hover{
+  background-color: rgb(219, 6, 226);
+
+}

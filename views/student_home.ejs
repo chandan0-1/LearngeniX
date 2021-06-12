@@ -1,14 +1,48 @@
-<link rel="stylesheet" href="/css/users.css" />
-<link rel="stylesheet" href="/css/chat_box.css" />
+<link rel="stylesheet" href="/css/student_home.css">
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-  integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-  crossorigin="anonymous"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
-<div>
-  <p>rendering from the Student'home !!!!!!!!</p>
+
+<div id="profile">
+    <!-- <h1 style="background-color: rgb(234, 238, 236);"> Welcome: <%= user.name %> !</h1> -->
+
+
+    <aside>
+      <div>
+
+        <a href="">Home <i class="fas fa-home"></i></a></br>
+
+      </div>
+
+      <div>
+
+        <a href="">Ask Doubt <i class="fas fa-question"></i></a>
+
+      </div>
+
+
+    </aside>
+    <p> Email: <%= user.email %> </p>
+
+    <div id="doubt-box">
+      <div class="inner-div">
+        <label for="title">Title:</label></br>
+        <input placeholder="Enter the title Here.." type="text" id="title">
+        
+      </div>
+      <br>
+
+      <div class="inner-div">
+        <label for="title">Description:</label></br>
+        <textarea placeholder="Whats issue you are facing?" name="" id="desc" cols="30" rows="10"></textarea>
+      </div>
+      <br>
+
+
+      <button id="btn">Ask Doubt</button>
+    </div>
+
+    
+
+
 </div>
- 

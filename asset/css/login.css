@@ -1,0 +1,95 @@
+body {
+  background-color: rgb(199, 199, 233);
+    font-family: "Montserrat", sans-serif;
+}
+
+.sign-in-contanier {
+  width: 30vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10vh;
+  box-shadow: 0px 0px 15px rgb(59, 58, 56);
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+  /* background-color: rgb(213, 115, 216); */
+
+}
+form input {
+  display: block;
+  margin: 7px;
+  width: 19vw;
+  height: 30px;
+  /* border-radius: 4px; */
+  border-width: 0px;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1px;
+  /* background: none; */
+  /* box-shadow: 0px 0px 5px rgb(206, 200, 200) inset; */
+  /* border: none; */
+  border-bottom: solid 2px black ;
+
+}
+form {
+  margin-top: 10vh;
+}
+h1 {
+  /* margin-left: 80px; */
+  font-size: 1.7rem;
+  color: rgb(78, 87, 87);
+  letter-spacing: 2px;
+  text-shadow: 0px 0px 15px rgb(138, 135, 135);
+
+}
+#button {
+  background-color: rgb(9, 43, 75);
+  color: white;
+  width: 19.3vw;
+  padding: 3px;
+  font-size: 0.9rem;
+  height: 4vh;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 20px;
+  border-radius: 5px;
+  text-shadow: 0px 0px 2px white;
+  border: none;
+
+}
+#google-auth {
+  color: rgb(252, 252, 252);
+  width: 19.3vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 1.8vw;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px rgb(71, 71, 71) inset;
+}
+#google-auth p {
+  color: rgb(80, 77, 77);
+}
+
+#logo {
+  width: 25px;
+  height: 25px;
+}
+
+#login-cntnr {
+  display: flex;
+  flex-direction: row;
+  margin-left: 17%;
+  margin-top: 6%;
+  /* justify-content: space-between; */
+  align-items: center;
+  text-align: center;
+}
+#div1 {
+  border-right: 1px solid grey;
+  /* margin-top: -20vw; */
+  margin-right: 10%;
+
+}
