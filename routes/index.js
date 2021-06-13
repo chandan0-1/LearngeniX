@@ -5,7 +5,9 @@ const homecntrl = require("../controller/index");
 
 
 router.use("/student",require("./student"))
-router.use("/mentor", require("./teacher"));
+router.use("/mentor", require("./mentor"));
+router.use("/doubt", require("./doubt"));
+
 
 router.get("/", homecntrl.home);
 router.get("/login",homecntrl.login);

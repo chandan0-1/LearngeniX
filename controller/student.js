@@ -5,11 +5,18 @@ module.exports = function(req, res){
   return res.send("<h1> Hello from Student's Homepage!!</h1>")
 }
 
-module.exports.home = function (req, res) {
-  return res.render('student_home',
-  title = "Student Name"
-  )
+module.exports.dashboard = function (req, res) {
+  return res.render('student_dashboard',{
+  title : "Student Dashboard"
+  })
 };
+
+module.exports.home = function (req, res) {
+  return res.render("student_home", {
+  title : "Raise Doubt"});
+  };
+
+
 
 module.exports.create = async function (req, res) {
   if (req.body.password != req.body.confirm_password) {
@@ -39,10 +46,7 @@ module.exports.create = async function (req, res) {
 
 module.exports.createSession = function (req, res) {
   // req.flash("success", "Logged in Successfully!");
-  return res.render('student_home',{
-    user: Student.name,
-    title: "Hello"
-  });
+  return res.redirect('/student/home')
 };
 
 module.exports.destroySession = function (req, res) {

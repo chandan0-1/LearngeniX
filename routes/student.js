@@ -4,6 +4,8 @@ const passport = require('passport')
 const studentCntrlr = require("../controller/student")
 
 router.get("/home", studentCntrlr.home);
+router.get("/dashboard", studentCntrlr.dashboard)
+
 router.post(
   "/create-session",
   passport.authenticate("student", { failureRedirect: "/login" }),
