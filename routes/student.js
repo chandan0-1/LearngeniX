@@ -1,10 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const passport = require('passport')
+
 const studentCntrlr = require("../controller/student")
 
-router.get("/home", studentCntrlr.home);
-router.get("/dashboard", studentCntrlr.dashboard)
+
+router.get("/home", passport.checkAuthentication, studentCntrlr.home);
+router.get("/dashboard", passport.checkAuthentication, studentCntrlr.dashboard);
+
+
+router.get("/sign-up", studentCntrlr.signUp);
+router.get("/sign-in", studentCntrlr.signIn);
 
 router.post(
   "/create-session",

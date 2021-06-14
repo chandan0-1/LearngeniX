@@ -2,7 +2,7 @@ let Student = require("../models/student")
 
 
 module.exports = function(req, res){
-  return res.send("<h1> Hello from Student's Homepage!!</h1>")
+  return res.send("<h1> Hello from Mentor's Homepage!!</h1>")
 }
 
 module.exports.dashboard = function (req, res) {
@@ -53,4 +53,25 @@ module.exports.destroySession = function (req, res) {
   req.logout();
 
   return res.redirect("/");
+};
+
+module.exports.signUp = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/student/sign-in");
+  }
+
+  return res.render("register", {
+    title: "DoubtIO | Sign Up",
+  });
+};
+
+// rendering the sign In page
+module.exports.signIn = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/student/home");
+  }
+
+  return res.render("login", {
+    title: "DoubtIO | Sign In",
+  });
 };

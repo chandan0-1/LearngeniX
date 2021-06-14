@@ -5,10 +5,21 @@
   <a id="header-title" href="/"><h2> Doubt IO || Home </h2></a>
 
   <ul>
-    <% if (locals.user){ %>
+    <% if (locals.student){ %>
 
           <li>
-            <a href="/login"><h3><%= user.name %></h3></a>
+           <h3>st<%= student.name %></h3>
+          </li>
+          
+          <li>
+            <button><a href="/sign-out">Sign Out</a></button>
+          </li>
+
+
+        <% }else if (locals.mentor){ %>
+
+          <li>
+            <a href="/mentor/home"><h3>mt<%= mentor.name %></h3></a>
           </li>
           
           <li>

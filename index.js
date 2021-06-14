@@ -1,9 +1,10 @@
 const express = require("express");
 const expressEjsLayouts = require("express-ejs-layouts");
 const app = express();
-const port = 8000;
+const port = 8001;
 const db = require("./config/mongoose");
 const cookieParser = require("cookie-parser");
+const mongoStore = require("mongo-store")
 
 const path = require("path");
 
@@ -32,7 +33,7 @@ app.use(express.static("./asset"));
 
 app.use(
   session({
-    name: "chatio",
+    name: "doubtio",
     // TODO changes before depylopment
     secret: "Hello",
     saveUninitialized: false,
@@ -54,7 +55,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(passport.setAuthenticatedUser);
+// to set user associated with each doubt
+app.use(passport.setAuthenticatedStudent);
+app.use(passport.setAuthenticatedMentor);
+
 // using Express router
 app.use("/",require("./routes"))
 

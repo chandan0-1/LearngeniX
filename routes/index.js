@@ -4,6 +4,7 @@ const router = express.Router();
 const homecntrl = require("../controller/index");
 
 
+
 router.use("/student",require("./student"))
 router.use("/mentor", require("./mentor"));
 router.use("/doubt", require("./doubt"));

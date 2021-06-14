@@ -14,22 +14,21 @@ passport.use('student',new LocalStrategy({
     passReqToCallback:'true'
   },
   function(req, email,password,done){
-    Student.findOne({email:email}, function(err,user){
+    Student.findOne({email:email}, function(err,student){
       if (err){
         // req.flash('error', err)
         return done(err);
       }
 
-      if (!user || user.password != password){
+      if (!student || student.password != password){
         console.log('error',"Invalid Credentials!" )
         return done(null,false);
       }
-      // if user found
-      return done(null,user);
+      // if student found
+      return done(null,student);
     })
   }
 ));
-
 passport.use(
   "mentor",
   new LocalStrategy(
@@ -38,41 +37,45 @@ passport.use(
       passReqToCallback: "true",
     },
     function (req, email, password, done) {
-      Mentor.findOne({ email: email }, function (err, user) {
+      Mentor.findOne({ email: email }, function (err, mentor) {
         if (err) {
-          req.flash("error", err);
+          // req.flash('error', err)
           return done(err);
         }
 
-        if (!user || user.password != password) {
-          req.flash("error", "Invalid Credentials!");
+        if (!mentor || mentor.password != password) {
+          console.log("error", "Invalid Credentials!");
           return done(null, false);
         }
-        // if user found
-        return done(null, user);
+        // if mentor found
+        return done(null, mentor);
       });
     }
   )
 );
 
 
+
+
 // serializing the user to decide which key is kept in the the cookies
-passport.serializeUser(function(user,done){
-  done(null,user.id);
+
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
 });
 
 
 // de-seralizing the user from the key in the cookies
 passport.deserializeUser(function(id,done){
-  Student.findById(id,function(err,user){
+  Student.findById(id,function(err,student){
 
-    return done(null,user);
+    return done(null,student);
   })
 })
 
 passport.deserializeUser(function (id, done) {
-  Mentor.findById(id, function (err, user) {
-    return done(null, user);
+  Mentor.findById(id, function (err,mentor) {
+    return done(null, mentor);
   });
 });
 
@@ -90,13 +93,28 @@ passport.checkAuthentication = function(req,res,next){
 }
 
 
-passport.setAuthenticatedUser = function(req,res,next){
+passport.setAuthenticatedStudent = function(req,res,next){
+
+
   if (req.isAuthenticated()){
     // req.user contains the current signed in user  from the session cookie and we are sending
     // it to the locals for the views
-    res.locals.user = req.user;
+    res.locals.student = req.student;
   }
   next();
 }
+
+passport.setAuthenticatedMentor = function (req, res, next) {
+
+  if (req.isAuthenticated()) {
+
+
+    // req.user contains the current signed in user  from the session cookie and we are sending
+    // it to the locals for the views
+    res.locals.mentor = req.mentor;
+  }
+  next();
+};
+
 
 module.exports = passport;

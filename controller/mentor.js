@@ -1,13 +1,12 @@
 let Teacher = require("../models/mentor");
 
-module.exports = function (req, res) {
-  return res.send("<h1> Hello from Student's Homepage!!</h1>");
+module.exports.temp = function (req, res) {
+  return res.send("<h1> Hello from mentor's Homepage!!</h1>");
 };
 
 module.exports.home = function (req, res) {
   return res.render("mentor_home", {
-    user: Teacher.name,
-    title: "Hello",
+    title: "Mentor || Home",
   });
 };
 
@@ -48,3 +47,23 @@ module.exports.destroySession = function(req,res){
 
   return res.redirect("/");
 }
+module.exports.signUp = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/mentor/home");
+  }
+
+  return res.render("register", {
+    title: "DoubtIO | Sign Up",
+  });
+};
+
+// rendering the sign In page
+module.exports.signIn = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/mentor/home");
+  }
+
+  return res.render("login", {
+    title: "DoubtIO | Sign In",
+  });
+};
