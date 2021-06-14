@@ -11,23 +11,29 @@
 
 <div id="login-cntnr">
     <div id ="div1" class="sign-in-contanier">
-<form action="/student/create" method="POST">
+<form action="/user/create" method="POST">
     <h1>Student Sign Up</h1>
     <input type="text" autocomplete="off" name="name" placeholder="Enter Name" required>
     <input type="email" autocomplete="off" name="email" placeholder="Enter Email" required>
     <input type="password" autocomplete="off" name="password" placeholder="Enter Password" required>
     <input type="password" autocomplete="off" name="confirm_password" placeholder="Confirm Password">
+    <input type="hidden" value="student" name="user_type">
+    <!-- <select name="type" name="user_type" id="">
+        <option value="mentor">Mentor</option>
+        <option value="student">Student</option>
+    </select> -->
     <input id="button" type="submit" value="Sign Up">
 </form>
     </div>
 
     <div id="div2" class="sign-in-contanier">
-<form action="/mentor/create" method="POST">
+<form action="/user/create" method="POST">
     <h1>Mentor Sign Up</h1>
     <input type="text" autocomplete="off" name="name" placeholder="Enter Name" required>
     <input type="email" autocomplete="off" name="email" placeholder="Enter Email" required>
     <input type="password" autocomplete="off" name="password" placeholder="Enter Password" required>
     <input type="password" autocomplete="off" name="confirm_password" placeholder="Confirm Password">
+    <input type="hidden" value="mentor" name="user_type">
     <input id="button" type="submit" value="Register">
 </form>
   </div>

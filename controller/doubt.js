@@ -1,5 +1,5 @@
 const Doubt = require("../models/doubt");
-const student = require("./mentor");
+
 
 
 module.exports.create = async function(req,res){
@@ -21,3 +21,11 @@ module.exports.create = async function(req,res){
     console.log("Error",err)
   }
 }
+
+// module.exports.showDoubts = async function(req, res){
+//   try{
+
+//   if (doubt)
+//     doubt)
+//   }
+// }

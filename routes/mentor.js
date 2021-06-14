@@ -5,7 +5,7 @@ const passport = require('passport')
 
 const teacherCntrlr = require("../controller/mentor");
 
-router.get("/home", passport.checkAuthentication, teacherCntrlr.home);
+router.get("/home", teacherCntrlr.home);
 router.get("/temp", passport.checkAuthentication, teacherCntrlr.temp);
 
 
@@ -15,7 +15,7 @@ router.get("/sign-in", teacherCntrlr.signIn);
 
 router.post(
   "/create-session",
-  passport.authenticate("mentor", { failureRedirect: "/login" }),
+  passport.authenticate("local", { failureRedirect: "/login" }),
   teacherCntrlr.createSession
 );
   

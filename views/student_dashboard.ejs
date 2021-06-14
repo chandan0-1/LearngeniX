@@ -1,43 +1,4 @@
-<style>
-  #Title{
-    text-align: center;
-  }
-  body{
-    font-family: "Montserrat", sans-serif;
-
-  }
-  #asked-by{
-    text-align: right;
-  }
-  .inner-div{
-    border-bottom: 1px solid black;
-  }
-  .comment-input{
-  width:80%;
-  height: 5vh;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
-  border: 2px solid black;
-  border-radius: 10px;
-  box-shadow: 0px 0px 15px white;
-  }
-  #cmt-btn{
-  margin-left: 2%;
-  border-radius: 30px;
-  padding: 8px 30px;
-  color:white;
-  background-color: rgb(112, 4, 212);
-  border: none;
-  box-shadow: 0px 0px 15px  rgb(255, 202, 233);
-  cursor: pointer;
-  letter-spacing: 1px;
-  font-size: 0.75rem;
-  right:0
-  }
- 
-</style>
-
+<link rel="stylesheet" href="/css/student_dashboard.css">
 
 
 <%- include("aside.ejs") %>
@@ -45,14 +6,23 @@
 
 
 
-<div style="margin-top: 5%;" id="doubt-box">
-  <div class="inner-div">
-        <h3 id="Title">This the title of the doubt:</h3>
+<div id="post-cntnr">
+  <!-- <ul id="post-cntnr"> -->
+    <% for (doubt of doubt){ %>
+      <li style="width: 70%;margin-left: 15%; margin-top: 30px;" id="doubt-box">
+    <div class="inner-div">
+        <h3 id="Title"><%= doubt.title %></h3>
+
+        <% if (doubt.status == 'active'){ %>
+          <div class="status active"><%= doubt.status %></div>
+        <%}else{%>
+          <div class="status resolved"><%= doubt.status %></div>
+          <%}%>
         <!-- <label for="title">Title:</label></br> -->
         <label for="title">Description:</label></br>
-        <p>this is the Description of the doubt!!</p>
+        <p><%= doubt.description %></p>
 
-        <p id = "asked-by">Asked by: chandan</span>
+        <p id = "asked-by">Asked by: <span id='user-name'><%= doubt.student.name %> </h2> </p>
         
       </div>
       <br>
@@ -63,8 +33,9 @@
         <input class="comment-input" type="text" placeholder="Type the comment here....">
         <input id="cmt-btn" type="submit" value="Publish">
       </form>
+    </li>
+    <%}%>
+</div>
 
 
 
-
-    </div>

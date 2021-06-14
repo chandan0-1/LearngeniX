@@ -8,6 +8,8 @@ const homecntrl = require("../controller/index");
 router.use("/student",require("./student"))
 router.use("/mentor", require("./mentor"));
 router.use("/doubt", require("./doubt"));
+router.use("/user", require("./user"));
+
 
 
 router.get("/", homecntrl.home);

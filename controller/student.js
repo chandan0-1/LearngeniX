@@ -1,15 +1,22 @@
-let Student = require("../models/student")
+const Doubt = require("../models/doubt");
+// let Student = require("../models/student")
 
 
 module.exports = function(req, res){
   return res.send("<h1> Hello from Mentor's Homepage!!</h1>")
 }
 
-module.exports.dashboard = function (req, res) {
-  return res.render('student_dashboard',{
-  title : "Student Dashboard"
+module.exports.dashboard =  function (req, res) {
+
+    Doubt.find({}, function(err,doubt){
+      console.log("Hellor",doubt)
+      return res.render('student_dashboard',{
+        title : "Dashboard",
+        doubt 
+    });
+
   })
-};
+}
 
 module.exports.home = function (req, res) {
   return res.render("student_home", {

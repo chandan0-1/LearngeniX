@@ -39,7 +39,7 @@ app.use(
     saveUninitialized: false,
     resave: false,
     cookie: {
-      maxAge: 1000 * 6000,
+      maxAge: 100000 * 6000,
     },
     // store: new mongoStore(
     //   {
@@ -56,8 +56,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // to set user associated with each doubt
-app.use(passport.setAuthenticatedStudent);
-app.use(passport.setAuthenticatedMentor);
+app.use(passport.setAuthenticatedUser);
 
 // using Express router
 app.use("/",require("./routes"))

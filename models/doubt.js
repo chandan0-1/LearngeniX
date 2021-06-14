@@ -12,12 +12,12 @@ const doubtScheme = new mongoose.Schema(
 
     student: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Student",
+      ref: "User",
     },
 
     mentor: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Mentor",
+      ref: "User",
     },
     status:{
       type:String,
