@@ -6,8 +6,7 @@
 
 
 
-<div id="post-cntnr">
-  <!-- <ul id="post-cntnr"> -->
+<div id="doubt-cntnr">
     <% for (doubt of doubt){ %>
       <li style="width: 70%;margin-left: 15%; margin-top: 30px;" id="doubt-box">
     <div class="inner-div">
@@ -23,14 +22,26 @@
         <p><%= doubt.description %></p>
 
         <p id = "asked-by">Asked by: <span id='user-name'><%= doubt.student.name %> </h2> </p>
-        
+        <span class="date">Raised on <%= doubt.createdAt.toLocaleDateString()
+ %></span>
+        <span class="date"> at:<%= doubt.createdAt.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></span></br>
       </div>
       <br>
 
 
-      <span>this the first comment</span>
-      <form action="">
-        <input class="comment-input" type="text" placeholder="Type the comment here....">
+      <%for (comment of doubt.comments){ %>
+        <div class="comment-cntnr">
+        <span class="commenter"><%= comment.user.name %>:-</span>
+        <span class="date"> commented on <%= comment.createdAt.toLocaleDateString()
+ %></span>
+        <span class="date"> at:<%= comment.createdAt.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></span></br>
+        <span class="comment"> <%= comment.content %></span></br>
+
+        </div>
+      <%}%>
+      <form action="/comment/create" method="POST">
+        <input class="comment-input" name="content" type="text" placeholder="Type the comment here....">
+        <input type="hidden" name="doubtID" value="<%= doubt._id%>">
         <input id="cmt-btn" type="submit" value="Publish">
       </form>
     </li>

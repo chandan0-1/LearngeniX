@@ -10,7 +10,15 @@ module.exports.dashboard =  function (req, res) {
   // let doubt = await Doubt.find({});
   
 
-  Doubt.find({}).populate("student").exec(
+  Doubt.find({}).sort('-createdAt')
+  .populate("student")
+  .populate({
+    path : 'comments',
+    populate:{
+      path: 'user'
+    }
+  })
+  .exec(
     function(err,doubt){
       return res.render("student_dashboard", {
         title: "Student Dashboard",
@@ -69,14 +77,4 @@ module.exports.contentSwitch = async function(req, res){
   }
   
 }
-// module.exports.createSession = function (req, res) {
-//   // req.flash("success", "Logged in Successfully!");
-//   return res.redirect("/student/home");
-// };
-
-// module.exports.destroySession = function (req, res) {
-//   req.logout();
-
-//   return res.redirect("/");
-// };
 

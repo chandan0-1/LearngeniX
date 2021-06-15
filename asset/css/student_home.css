@@ -1,5 +1,5 @@
 #doubt-box{
-  padding:30px 15px;
+  padding:10px 15px;
   margin-left: 25%;
   margin-top: 10%;
   width: 50%;
@@ -20,6 +20,13 @@ background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, F
 padding: 0;
 margin-top: -10px;
 }
+  #raise-doubt{
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: rgb(221, 83, 90);
+    text-align: center;
+    text-shadow: 0px 2px 8px rgb(255, 250, 251);
+  }
 
 #profile{
   display: flex;
@@ -77,6 +84,7 @@ aside a:hover{
 label{
   letter-spacing: 1px;
   font-size: 0.8rem;
+  color: #1f1f22;
 }
 
 #btn{

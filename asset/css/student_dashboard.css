@@ -9,6 +9,7 @@
     text-align: right;
     font-size: .7rem;
   }
+
   .inner-div{
     border-bottom: 1px solid black;
   }
@@ -36,22 +37,27 @@
   right:0
   }
 
-  /* Post Conatainer */
-  #post-cntnr{
+
+
+  #doubt-cntnr{
     margin-left: 23%;
     margin-top: 4%;
-    /* padding-top: 1px; */
-    /* padding: 2px; */
     width:72%;
-    height:90vh;
-    /* background-color: red; */
+    height:85vh;
     overflow-y: scroll;
+    overflow-x: hidden;
+
   }
+
+  #doubt-cntnr::-webkit-scrollbar {
+    display: none;
+  }
+
   #doubt-box{
     position: relative;
   }
 
-  #post-cntnr li{
+  #doubt-cntnr li{
     list-style: none;
   }
   #user-name{
@@ -65,8 +71,8 @@
     font-size: 0.8rem;
     letter-spacing: 1px;
     position: absolute;
-    right:0;
-    top:0;
+    right:5px;
+    top:5px;
     text-shadow: 0px 0px 13px black;
     padding :8px 25px;
   }
@@ -76,4 +82,34 @@
   }
   .active{
     background-color: rgb(202, 223, 15);
+  }
+
+  /* ------Comment part---------- */
+  .comment{
+    font-size: 0.8rem ;
+    color:rgb(5, 141, 73);
+    font-weight: 600;
+    font-family:sans-serif;
+    margin-left: 20px;
+    /* text-shadow: 0px 0px 5px rgb(14, 13, 13); */
+  }
+  .commenter{
+    color:rgb(221, 9, 133);
+    font-weight: bold;
+    font-size: .9rem;
+    
+  }
+  .comment-cntnr{
+    border-radius: 10px;
+    padding :10px;
+    box-shadow: 0px 0px 5px rgb(37, 37, 37) inset;
+    margin-bottom: 10px;
+    background:rgba(80, 80, 80, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(12px);
+    transition: 0.5s; 
+  }
+  .date{
+    font-size: .7rem;
+    text-align: center;
   }

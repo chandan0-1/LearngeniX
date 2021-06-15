@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
 
 <header >
-  <a id="header-title" href="/"><h2> Doubt IO || Home </h2></a>
+  <a id="header-title" href="/"> <h2> <i class="fas fa-book-reader"></i>  LearngeniX </h2></a>
 
   <ul>
     <% if (locals.user && locals.user.type == 'student'){ %>
@@ -20,7 +21,7 @@
         <% }else if (locals.user && locals.user.type == "mentor"){ %>
 
           <li>
-            <a href="/mentor/home"><h3 class="mentor"><i class="fas fa-user Color"></i><%= user.name %></h3></a>
+            <a href="/mentor/home"><h3 class="mentor"><i class="fas fa-user Color"></i> <%= user.name %></h3></a>
           </li>
           
           <li>

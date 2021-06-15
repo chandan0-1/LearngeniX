@@ -3,11 +3,11 @@
 <div id="profile">
    
   <%- include("aside.ejs") -%>
-
-    
+  
   <div id="doubt-box">
     <form action="/doubt/create" method="POST">
-    <div class="inner-div">
+      <h2 id="raise-doubt">Raise Doubt</h1>
+      <div class="inner-div">
         <label for="title">Title:</label></br>
         <input name="title" autocomplete="off" placeholder="Enter the title Here.." type="text" class="title-input">
         <input type="hidden" value="Not Resolve" name="status">
