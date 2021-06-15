@@ -6,7 +6,8 @@ const passport = require('passport')
 const mentorCntrlr = require("../controller/mentor");
 
 router.get("/home", passport.checkAuthentication, mentorCntrlr.home);
-// router.get("/temp", passport.checkAuthentication, mentorCntrlr.temp);
+router.get("/dashboard", passport.checkAuthentication, mentorCntrlr.dashboard);
+router.get("/active-doubts/:id", passport.checkAuthentication, mentorCntrlr.activeDoubts);
 
 
 

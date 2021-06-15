@@ -50,11 +50,12 @@ body {
 
 .accept-btn {
   background: rgb(236, 14, 125);
-  padding: 5px 30px;
+  padding: 4px 27px;
+  margin-top: -10px;
   /* border-radius: 8px; */
   letter-spacing: 1px;
   font-size: 0.86rem;
-  font-weight: bold;
+  /* font-weight: bold; */
   box-shadow: 0px 0px 5px white;
 }
 .accept-btn:hover {

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title%></title>
+</head>
+<body>
+<%- include('mentor_aside.ejs') %>
+<link rel="stylesheet" href="/css/student_dashboard.css">
+
+
+
+
+
+
+<div id="doubt-cntnr">
+      <li style="width: 70%;margin-left: 15%; margin-top: 30px;" id="doubt-box">
+    <div class="inner-div">
+        <h3 id="Title"><%= doubt.title %></h3>
+
+        <% (doubt.status = 'running') %>
+
+        <label for="title">Description:</label></br>
+        <p><%= doubt.description %></p>
+
+        <p id = "asked-by">Asked by: <span id='user-name'><%= doubt.student.name %> </h2> </p>
+        <span class="date">Raised on <%= doubt.createdAt.toLocaleDateString()%></span>
+        <span class="date"> at:<%= doubt.createdAt.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></span></br>
+      </div>
+      <br>
+
+
+      <%for (comment of doubt.comments){ %>
+        <div class="comment-cntnr">
+            <span class="commenter"><%= comment.user.name %>:-</span>
+            <span class="date"> commented on <%= comment.createdAt.toLocaleDateString()%></span>
+            <span class="date"> at:<%= comment.createdAt.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></span></br>
+            <span class="comment"> <%= comment.content %></span></br>
+        </div>
+      <%}%>
+
+      <% if (locals.user.type == 'mentor'){ %>
+      <form action="/ans/create" method="POST">
+          <input class="comment-input" name="content" type="text" placeholder="Type the answer here....">
+          <input type="hidden" name="doubtID" value="<%= doubt._id%>">
+          <input id="cmt-btn" type="submit" value="Answer">
+      </form>
+      <% } %>
+    </li>
+</div>
+
+
+
+
+  
+</body>
+</html>
