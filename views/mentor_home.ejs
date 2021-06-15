@@ -1,28 +1,31 @@
-<link rel="stylesheet" href="/css/faculty_home.css">
+<%- include('mentor_aside.ejs') %>
 
-<%- include("mentor_aside.ejs") -%>
-<div id="dashboard">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  <link rel="stylesheet" href="/css/mentor_home.css">
+  <div id="active_doubt-cntnr">
+    <% for (doubt of doubt){ %>
+    <li class="doubt-Card">
+        <div class="inner-div">
+            <p class="title-name"><%= doubt.title %></p>
+            <a class ="accept-btn" href="">Accept</a>
+        </div>
 
-  <div class="dashboard-div">
-    <span>Avg. Rating</span>
-    <h2>4.95</h2>
+        <div class="inner-div div2">
+            <span class="desc"><%= doubt.description %></span>
+            <p class="asked-by">Asked by: <span class="user-name"><%= doubt.student.name %></span></p>
+        </div>
 
-  </div>
-
-  <div class="dashboard-div">
-    <span>Total Doubt Resolved</span>
-    <h2>1800</h2>
-
-  </div>
-  <div class="dashboard-div">
-    <span>Total Doubt Esclated</span>
-    <h2>23</h2>
-
-
-  </div>
-  <div class="dashboard-div">
-    <span>Avg. resolved time</span>
-    <h2>12 min</h2>
-
-  </div>
-</div>
+      </li>
+    <%}%>
+    </div>
+  
+</body>
+</html>

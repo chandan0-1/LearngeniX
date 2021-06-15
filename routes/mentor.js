@@ -3,24 +3,24 @@ const router = express.Router();
 const passport = require('passport')
 
 
-const teacherCntrlr = require("../controller/mentor");
+const mentorCntrlr = require("../controller/mentor");
 
-router.get("/home", teacherCntrlr.home);
-router.get("/temp", passport.checkAuthentication, teacherCntrlr.temp);
+router.get("/home", passport.checkAuthentication, mentorCntrlr.home);
+// router.get("/temp", passport.checkAuthentication, mentorCntrlr.temp);
 
 
 
-router.get("/sign-up", teacherCntrlr.signUp);
-router.get("/sign-in", teacherCntrlr.signIn);
+router.get("/sign-up", mentorCntrlr.signUp);
+router.get("/sign-in", mentorCntrlr.signIn);
 
 router.post(
   "/create-session",
   passport.authenticate("local", { failureRedirect: "/login" }),
-  teacherCntrlr.createSession
+  mentorCntrlr.createSession
 );
   
-router.post("/create", teacherCntrlr.create);
+// router.post("/create", mentorCntrlr.create);
   
-router.get("/sign-out", teacherCntrlr.destroySession);
+// router.get("/sign-out", mentorCntrlr.destroySession);
 
 module.exports = router;

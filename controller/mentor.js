@@ -1,41 +1,24 @@
-let Teacher = require("../models/mentor");
+let Teacher = require("../models/user");
+const Doubt =  require("../models/doubt")
 
 module.exports.temp = function (req, res) {
   return res.send("<h1> Hello from mentor's Homepage!!</h1>");
 };
 
-module.exports.home = function (req, res) {
-  return res.render("mentor_home", {
-    title: "Mentor || Home",
-  });
+module.exports.home = async function (req, res) {
+  let doubt = await Doubt.find({}).sort('-createdAt').populate('student');
+
+  if (doubt){
+    return res.render("mentor_home", {
+      title: "Home",
+      doubt
+    });
+
+  }
+
 };
 
-module.exports.create = async function (req, res) {
-  if (req.body.password != req.body.confirm_password) {
-    console.log("wrong Creditionals!");
-    return res.redirect("back");
-  }
-  console.log(req.body);
-  try {
-    let user = await Teacher.findOne({ email: req.body.email });
-    if (!user) {
-      Teacher.create(
-        {
-          name: req.body.name,
-          email: req.body.email,
-          password: req.body.password,
-        },
-        function (user) {
-          return res.redirect("/login");
-        }
-      );
-    } else {
-      return res.redirect("back");
-    }
-  } catch (err) {
-    console.log(err, "Internal Server error!!");
-  }
-};
+
 
 module.exports.createSession = function (req, res) {
   // req.flash("success", "Logged in Successfully!");
