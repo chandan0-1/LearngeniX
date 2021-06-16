@@ -8,8 +8,6 @@ body {
   margin-left: 25%;
   height: 80vh;
   margin-top: 5%;
-  /* background-color: red; */
-  /* background: rgba(12, 11, 11, 0.1); */
   border-radius: 15px;
   backdrop-filter: blur(12px);
   transition: 0.5s;
@@ -97,3 +95,4 @@ body {
 .asked-by {
   color: white;
 }
+

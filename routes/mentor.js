@@ -8,6 +8,11 @@ const mentorCntrlr = require("../controller/mentor");
 router.get("/home", passport.checkAuthentication, mentorCntrlr.home);
 router.get("/dashboard", passport.checkAuthentication, mentorCntrlr.dashboard);
 router.get("/active-doubts/:id", passport.checkAuthentication, mentorCntrlr.activeDoubts);
+router.get(
+  "/active-doubts-dummy",
+  passport.checkAuthentication,
+  mentorCntrlr.activeDoubtsDummy
+);
 
 
 
@@ -20,7 +25,7 @@ router.post(
   mentorCntrlr.createSession
 );
   
-// router.post("/create", mentorCntrlr.create);
+router.post("/create-ans", mentorCntrlr.createAns);
   
 // router.get("/sign-out", mentorCntrlr.destroySession);
 

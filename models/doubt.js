@@ -23,6 +23,9 @@ const doubtScheme = new mongoose.Schema(
       type:String,
       required:true
     },
+    answer :{
+      type: String
+    },
 
     // Include the array of ids of all comments in the doubt schema itself
     comments: [

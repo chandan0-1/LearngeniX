@@ -1,8 +1,9 @@
 let Teacher = require("../models/user");
 const Doubt = require("../models/doubt");
 
-module.exports.temp = function (req, res) {
-  return res.send("<h1> Hello from mentor's Homepage!!</h1>");
+module.exports.activeDoubtsDummy = function (req, res) {
+  return res.render("mentor_active_doubts",{
+  title: "Active Doubts"});
 };
 
 module.exports.home = async function (req, res) {
@@ -43,11 +44,26 @@ module.exports.activeDoubts = function(req,res){
         doubt: doubt,
       });
     }
-
   )
-
 }
 
+module.exports.createAns = async function(req, res){
+  try{
+  let doubt = await Doubt.findByIdAndUpdate(req.body.doubtID, {
+    answer: req.body.content,
+    status: "resolved",
+    mentor: req.user.id
+  });
+  if (doubt){
+    return res.redirect("/mentor/home");
+  }
+}catch(err){
+  return res.json({
+    status : 501,
+    message : "Internal Server Error"
+  })
+}
+}
 
 module.exports.createSession = function (req, res) {
   // req.flash("success", "Logged in Successfully!");
@@ -68,6 +84,7 @@ module.exports.signUp = function (req, res) {
     title: "DoubtIO | Sign Up",
   });
 };
+
 
 // rendering the sign In page
 module.exports.signIn = function (req, res) {

@@ -12,6 +12,7 @@ module.exports.dashboard =  function (req, res) {
 
   Doubt.find({}).sort('-createdAt')
   .populate("student")
+  .populate("mentor")
   .populate({
     path : 'comments',
     populate:{

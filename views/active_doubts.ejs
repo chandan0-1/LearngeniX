@@ -42,13 +42,18 @@
       <%}%>
 
       <% if (locals.user.type == 'mentor'){ %>
-      <form action="/ans/create" method="POST">
+      <form action="/mentor/create-ans" method="POST">
           <input class="comment-input" name="content" type="text" placeholder="Type the answer here....">
           <input type="hidden" name="doubtID" value="<%= doubt._id%>">
           <input id="cmt-btn" type="submit" value="Answer">
-      </form>
-      <% } %>
-    </li>
+          <div id="esclate-div">
+            <a class="esclate" href="/mentor/home">Esclate</a>
+          </div>
+          
+        </form>
+        <% } %>
+      </li>
+      
 </div>
 
 

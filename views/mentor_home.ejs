@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/css/mentor_home.css">
   <div id="active_doubt-cntnr">
     <% for (doubt of doubt){ %>
+      <% if (doubt.status == "active"){%>
     <li class="doubt-Card">
         <div class="inner-div">
             <p class="title-name"><%= doubt.title %></p>
@@ -24,7 +25,7 @@
         </div>
 
       </li>
-    <%}%>
+    <%}}%>
     </div>
   
 </body>

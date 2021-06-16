@@ -39,13 +39,22 @@
 
         </div>
       <%}%>
+      <% if (doubt.status == "resolved"){%>
+        <div class="answer">
+        <span>Resolved by: <span id="mentor-name"><%= doubt.mentor.name %></span></span>
+          <span class="date"> on <%= doubt.createdAt.toLocaleDateString()
+ %></span>
+        <span class="date"> at:<%= doubt.createdAt.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></span></br>
+        <h2 > <%= doubt.answer %> </h2>
+        </div>
+      <%}else{%>
       <form action="/comment/create" method="POST">
         <input class="comment-input" name="content" type="text" placeholder="Type the comment here....">
         <input type="hidden" name="doubtID" value="<%= doubt._id%>">
         <input id="cmt-btn" type="submit" value="Publish">
       </form>
     </li>
-    <%}%>
+    <%}}%>
 </div>
 
 
