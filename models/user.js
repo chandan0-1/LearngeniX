@@ -14,12 +14,18 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    type : {
-      type : String,
-      required: true
+    type: {
+      type: String,
+      required: true,
     },
 
     doubt: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Doubt",
+      },
+    ],
+    esclateDoubt: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Doubt",

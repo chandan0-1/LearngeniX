@@ -1,9 +1,10 @@
-let Teacher = require("../models/user");
+let User = require("../models/user");
 const Doubt = require("../models/doubt");
 
 module.exports.activeDoubtsDummy = function (req, res) {
-  return res.render("mentor_active_doubts",{
-  title: "Active Doubts"});
+  return res.render("mentor_active_doubts", {
+    title: "Active Doubts",
+  });
 };
 
 module.exports.home = async function (req, res) {
@@ -17,53 +18,95 @@ module.exports.home = async function (req, res) {
 };
 
 // -------------Rendering the Dashboard Section of mentor----------
-module.exports.dashboard = function (req, res) {
+module.exports.dashboard = async function (req, res) {
+  let doubt = await Doubt.find({});
+  let user = await User.find({});
+  // for (user of user){
+  //   if (user.type == 'mentor'){
+
+  //   }
+  // }
+
+  var temp = 0;
+  var resolved = 0;
+  for (doubt of doubt) {
+    temp++;
+    if (doubt.status == "resolved") {
+      resolved++;
+    }
+  }
+
   if (req.isAuthenticated()) {
     return res.render("mentor_dashboard", {
       title: "Mentor Dashboard",
+      temp: temp,
+      resolved,
+      users :user,
+    });
+  }
+};
+
+// -------------Rendering the Dashboard Section of mentor----------
+module.exports.activeDoubts = function (req, res) {
+  Doubt.findById(req.params.id)
+    .populate("student")
+    .populate({
+      path: "comments",
+      populate: {
+        path: "user",
+      },
+    })
+    .exec(function (err, doubt) {
+      return res.render("active_doubts", {
+        title: "Active Doubts",
+        doubt: doubt,
+      });
+    });
+};
+
+module.exports.createAns = async function (req, res) {
+  try {
+    let doubt = await Doubt.findByIdAndUpdate(req.body.doubtID, {
+      answer: req.body.content,
+      status: "resolved",
+      mentor: req.user.id,
+    });
+
+    User.findById(req.user._id, function (err, user) {
+      user.doubt.push(req.body.doubtID);
+      user.save();
+    });
+
+    return res.redirect("/mentor/home");
+  } catch (err) {
+    return res.json({
+      status: 501,
+      message: "Internal Server Error",
     });
   }
 };
 
 
-// -------------Rendering the Dashboard Section of mentor----------
-module.exports.activeDoubts = function(req,res){
+// -----------------------------------------------------------------
+// creating data for Esclated Doubt
+module.exports.esclateDoubt = async function (req, res) {
+  try {
 
-  Doubt.findById(req.params.id)
-  .populate("student")
-  .populate({
-    path : 'comments',
-    populate:{
-      path: 'user'
-    }
-  })
-  .exec(
-    function(err,doubt){
-      return res.render("active_doubts", {
-        title: "Active Doubts",
-        doubt: doubt,
-      });
-    }
-  )
-}
 
-module.exports.createAns = async function(req, res){
-  try{
-  let doubt = await Doubt.findByIdAndUpdate(req.body.doubtID, {
-    answer: req.body.content,
-    status: "resolved",
-    mentor: req.user.id
-  });
-  if (doubt){
+    User.findById(req.user._id, function (err, user) {
+      user.esclateDoubt.push(req.body.doubtID);
+      user.save();
+    });
+
     return res.redirect("/mentor/home");
+  } catch (err) {
+    return res.json({
+      status: 501,
+      message: "Internal Server Error",
+    });
   }
-}catch(err){
-  return res.json({
-    status : 501,
-    message : "Internal Server Error"
-  })
-}
-}
+};
+
 
 module.exports.createSession = function (req, res) {
   // req.flash("success", "Logged in Successfully!");
@@ -84,7 +127,6 @@ module.exports.signUp = function (req, res) {
     title: "DoubtIO | Sign Up",
   });
 };
-
 
 // rendering the sign In page
 module.exports.signIn = function (req, res) {

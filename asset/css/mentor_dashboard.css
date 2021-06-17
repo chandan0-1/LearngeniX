@@ -1,8 +1,9 @@
 body{
   font-family: "Montserrat", sans-serif;
-
+  background-color: none;
 }
 #dashboard{
+  background: none;
   width:80%;
   height: 23vh;
   margin-left: 20%;
@@ -41,5 +42,55 @@ color: rgb(238, 238, 238);
   font-size: 2.2rem;
   letter-spacing: 4px;
 margin-bottom: 10px;
+
+}
+.title-name{
+    font-weight: bolder;
+  color: rgb(36, 231, 133);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  font-family: "Montserrat", sans-serif;
+  /* text-shadow: 10px 10px 40px white; */
+}
+.doubt-desc{
+  color:rgb(255, 189, 6);
+  text-shadow: 10px 10px 40px black;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.desc{
+  color: white;
+  font-size: .8rem;
+}
+#ta-report{
+  position: relative;
+  padding: 10px;
+  width: 70%;
+  margin-left: 25%;
+  height: 46vh;
+  margin-top: 1%;
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  transition: 0.5s;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+}
+#ta-report::-webkit-scrollbar {
+  display: none;
+}
+.doubt-Card {
+  height: 26%;
+}
+#Ta-header{
+  text-align: center;
+  color: white;
+  margin-left: 20%;
+  margin-top: 3%;
+  letter-spacing: 1px;
+  text-shadow: 10px 10px 40px black;
 
 }

@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="/css/faculty_home.css">
+<link rel="stylesheet" href="/css/mentor_home.css">
+<link rel="stylesheet" href="/css/mentor_dashboard.css">
+
 
 <%- include("mentor_aside.ejs") -%>
 <div id="dashboard">
@@ -10,13 +12,13 @@
   </div>
 
   <div class="dashboard-div">
-    <h4>Total Doubt Resolved</h4>
-    <h2 id="data">1800</h2>
+    <h4>Total Doubt Raised</h4>
+    <h2 id="data"><%= temp%></h2>
 
   </div>
   <div class="dashboard-div">
-    <h4>Total Doubt Esclated</h4>
-    <h2 id="data">23</h2>
+    <h4>Total Doubt Resolved</h4>
+    <h2 id="data"><%= resolved%></h2>
 
 
   </div>
@@ -26,3 +28,29 @@
 
   </div>
 </div>
+
+
+
+<h3 id=Ta-header>TA's Report</h3>
+  <div id="ta-report">
+    <% for (user of users){ %>
+      <% if (user.type == "mentor"){%>
+    <li class="doubt-Card">
+        <div class="inner-div">
+            <p class="title-name"><%= user.name %></p>
+            
+        </div>
+
+
+        <%let  ans = (user.esclateDoubt.length == 0)? 100:  (user.doubt.length /(user.esclateDoubt.length + user.doubt.length)) * 100  %>
+        <%  ans = (user.doubt.length == 0)? 0:ans %>
+        
+        <div class="inner-div div2">
+            <span class="desc">Total Doubt Resolved: <span class="doubt-desc"><%= user.doubt.length %></span></span>
+             <span class="desc">Total Doubt Esclated: <span class="doubt-desc"><%= user.esclateDoubt.length %></span></span>
+            <p class="asked-by">Mentor Performance ratio: <span class="user-name"><%= ans.toString().slice(0,4) %>%</span></p>
+        </div>
+
+      </li>
+    <%}}%>
+    </div>

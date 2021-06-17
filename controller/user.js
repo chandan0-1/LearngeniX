@@ -70,7 +70,6 @@ module.exports.contentSwitch = async function(req, res){
 
   console.log(user)
   if (user && user.type == 'mentor'){
-    console.log("Mentor")
     return res.redirect("/mentor/home")
   }
   else{

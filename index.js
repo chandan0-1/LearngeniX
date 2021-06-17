@@ -3,8 +3,9 @@ const expressEjsLayouts = require("express-ejs-layouts");
 const app = express();
 const port = 8001;
 const db = require("./config/mongoose");
+const session = require("express-session")
 const cookieParser = require("cookie-parser");
-const mongoStore = require("mongo-store")
+const flash = require('connect-flash');
 
 const path = require("path");
 
@@ -12,8 +13,10 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 const passport = require("passport");
-const session = require("express-session")
 const passportLocal = require("./config/passport-local-strategy");
+
+// setting up mongo-store
+const mongoStore = require("connect-mongo")
 
 
 // app.use(express.urlencoded());
@@ -30,34 +33,39 @@ app.set("views","./views");
 
 app.use(express.static("./asset"));
 
-
+// Setting Mongo session
 app.use(
   session({
-    name: "doubtio",
-    // TODO changes before depylopment
-    secret: "Hello",
+    name: "LearnIO",
+    secret: "testingKey2#",
     saveUninitialized: false,
     resave: false,
     cookie: {
-      maxAge: 100000 * 6000,
+      maxAge: 1000 * 6000,
     },
-    // store: new mongoStore(
-    //   {
-    //     mongooseConnection: db,
-    //     autoRemove: "disabled",
-    //   },
-    //   function (err) {
-    //     console.log(err || "connect mongodb setup OK");
-    //   }
-    // ),
+    store: mongoStore.create(
+      {
+        mongoUrl: "mongodb://localhost/doubt_mgmt",
+        autoRemove: "disabled",
+      },
+      function (err) {
+        console.log(err || "connect mongodb setup OK");
+      }
+    ),
   })
 );
+
+
+
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 // to set user associated with each doubt
 app.use(passport.setAuthenticatedUser);
 
+app.use(flash());
 // using Express router
 app.use("/",require("./routes"))
 

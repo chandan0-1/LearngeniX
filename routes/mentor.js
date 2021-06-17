@@ -12,7 +12,14 @@ router.get(
   "/active-doubts-dummy",
   passport.checkAuthentication,
   mentorCntrlr.activeDoubtsDummy
-);
+  );
+  router.get("/escalate", passport.checkAuthentication, mentorCntrlr.esclateDoubt);
+  router.post(
+    "/create-ans",
+    passport.checkAuthentication,
+    mentorCntrlr.createAns
+  );
+  
 
 
 
@@ -25,8 +32,7 @@ router.post(
   mentorCntrlr.createSession
 );
   
-router.post("/create-ans", mentorCntrlr.createAns);
-  
+
 // router.get("/sign-out", mentorCntrlr.destroySession);
 
 module.exports = router;
