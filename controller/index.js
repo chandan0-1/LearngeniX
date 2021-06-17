@@ -16,6 +16,8 @@ module.exports.register = function (req, res) {
 };
 
 module.exports.destroySession = function (req, res) {
+  req.flash("error", "You have Logged out!");
+
   req.logout();
 
   return res.redirect("/");

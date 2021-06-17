@@ -37,6 +37,8 @@ module.exports.home = function (req, res) {
 };
 
 module.exports.create = async function (req, res) {
+  req.flash("success", "User created successfully!!");
+
   if (req.body.password != req.body.confirm_password) {
     console.log("wrong Creditionals!");
     return res.redirect("back");
@@ -66,9 +68,10 @@ module.exports.create = async function (req, res) {
 
 module.exports.contentSwitch = async function(req, res){
 
+  req.flash("success", "Logged in Successfully!");
+
   let user = await  User.findOne({email : req.body.email});
 
-  console.log(user)
   if (user && user.type == 'mentor'){
     return res.redirect("/mentor/home")
   }

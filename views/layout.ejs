@@ -39,6 +39,28 @@ background: linear-gradient(to right, #A7BFE8, #6190E8); /* W3C, IE 10+/ Edge, F
 
   <%- script -%>
 
+    <script>
+      <% if(flash.success && flash.success.length > 0){ %>
+        new Noty({
+          theme: 'relax',
+          text: "<%= flash.success %>",
+          type: 'success',
+          layout: 'topRight',
+          timeout: 1500
+        }).show();
+      <% } %>
+
+      <% if(flash.error && flash.error.length > 0){ %>
+        new Noty({
+          theme: 'relax',
+          text: "<%= flash.error %>",
+          type: 'error',
+          layout: 'topRight',
+          timeout: 1800
+        }).show();
+      <% } %>
+
+  </script>
   
 </body>
 </html>

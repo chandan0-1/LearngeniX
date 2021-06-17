@@ -3,6 +3,8 @@ const Doubt = require("../models/doubt");
 
 
 module.exports.create = async function(req,res){
+  req.flash("success", "Doubt Posted Successfully!!");
+
   try{
     Doubt.create(
       {

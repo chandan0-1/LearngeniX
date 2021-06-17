@@ -13,8 +13,9 @@ router.get(
   passport.checkAuthentication,
   mentorCntrlr.activeDoubtsDummy
   );
-  router.get("/escalate", passport.checkAuthentication, mentorCntrlr.esclateDoubt);
-  router.post(
+router.get("/escalate", passport.checkAuthentication, mentorCntrlr.esclateDoubt);
+
+router.post(
     "/create-ans",
     passport.checkAuthentication,
     mentorCntrlr.createAns
@@ -23,8 +24,6 @@ router.get(
 
 
 
-router.get("/sign-up", mentorCntrlr.signUp);
-router.get("/sign-in", mentorCntrlr.signIn);
 
 router.post(
   "/create-session",

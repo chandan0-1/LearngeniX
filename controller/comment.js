@@ -3,7 +3,8 @@ const Doubt = require("../models/doubt");
 
 
 module.exports.create = async function(req,res){
-  console.log(req.body)
+    req.flash("error", "Comment Posted !!");
+
 
   try{
     let doubt = await  Doubt.findById(req.body.doubtID);

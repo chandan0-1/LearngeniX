@@ -18,7 +18,7 @@
     border-bottom: 1px solid black;
   }
   .comment-input{
-  width:80%;
+  width:78%;
   height: 5vh;
   font-size: 1rem;
   letter-spacing: 1px;
@@ -30,7 +30,7 @@
   #cmt-btn{
   margin-left: 2%;
   border-radius: 30px;
-  padding: 8px 30px;
+  padding: 8px 2.7%;
   color:white;
   background-color: rgb(112, 4, 212);
   border: none;

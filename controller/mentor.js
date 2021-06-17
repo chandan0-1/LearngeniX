@@ -48,6 +48,7 @@ module.exports.dashboard = async function (req, res) {
 
 // -------------Rendering the Dashboard Section of mentor----------
 module.exports.activeDoubts = function (req, res) {
+  
   Doubt.findById(req.params.id)
     .populate("student")
     .populate({
@@ -62,9 +63,12 @@ module.exports.activeDoubts = function (req, res) {
         doubt: doubt,
       });
     });
+
 };
 
 module.exports.createAns = async function (req, res) {
+        req.flash("success", "Doubt Resolved Successfully !!");
+
   try {
     let doubt = await Doubt.findByIdAndUpdate(req.body.doubtID, {
       answer: req.body.content,
@@ -92,6 +96,7 @@ module.exports.createAns = async function (req, res) {
 module.exports.esclateDoubt = async function (req, res) {
   try {
 
+        req.flash("error", "Doubt Esclated !!");
 
     User.findById(req.user._id, function (err, user) {
       user.esclateDoubt.push(req.body.doubtID);
@@ -109,32 +114,14 @@ module.exports.esclateDoubt = async function (req, res) {
 
 
 module.exports.createSession = function (req, res) {
-  // req.flash("success", "Logged in Successfully!");
+  req.flash("success", "Logged in Successfully!");
   return res.redirect("/mentor/home");
 };
 
 module.exports.destroySession = function (req, res) {
   req.logout();
+  req.flash("success", "You have Logged out!");
 
   return res.redirect("/");
 };
-module.exports.signUp = function (req, res) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/mentor/home");
-  }
 
-  return res.render("register", {
-    title: "DoubtIO | Sign Up",
-  });
-};
-
-// rendering the sign In page
-module.exports.signIn = function (req, res) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/mentor/home");
-  }
-
-  return res.render("login", {
-    title: "DoubtIO | Sign In",
-  });
-};

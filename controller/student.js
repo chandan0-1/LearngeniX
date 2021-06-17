@@ -19,6 +19,8 @@ module.exports.dashboard =  function (req, res) {
 }
 
 module.exports.home = function (req, res) {
+  req.flash("success", "You have Logged out!");
+
   return res.render("student_home", {
   title : "Raise Doubt"});
   };
@@ -52,33 +54,7 @@ module.exports.create = async function (req, res) {
 
 
 module.exports.createSession = function (req, res) {
-  // req.flash("success", "Logged in Successfully!");
+  req.flash("success", "Logged in Successfully!");
   return res.redirect('/student/home')
 };
 
-module.exports.destroySession = function (req, res) {
-  req.logout();
-
-  return res.redirect("/");
-};
-
-module.exports.signUp = function (req, res) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/student/sign-in");
-  }
-
-  return res.render("register", {
-    title: "DoubtIO | Sign Up",
-  });
-};
-
-// rendering the sign In page
-module.exports.signIn = function (req, res) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/student/home");
-  }
-
-  return res.render("login", {
-    title: "DoubtIO | Sign In",
-  });
-};
