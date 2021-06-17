@@ -6,6 +6,8 @@ const db = require("./config/mongoose");
 const session = require("express-session")
 const cookieParser = require("cookie-parser");
 const flash = require('connect-flash');
+
+// Linking our own Middleware
 const customWare = require("./config/middleware")
 
 const path = require("path");
