@@ -45,7 +45,7 @@ app.use(
     },
     store: mongoStore.create(
       {
-        mongoUrl: "mongodb://localhost/doubt_mgmt",
+        mongoUrl: process.env.db || "mongodb://localhost/doubt_mgmt",
         autoRemove: "disabled",
       },
       function (err) {
