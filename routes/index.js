@@ -17,7 +17,7 @@ router.use("/comment", require("./comment"));
 router.get("/", homecntrl.home);
 router.get("/login",homecntrl.login);
 router.get("/register", homecntrl.register);
-
 router.get("/sign-out", homecntrl.destroySession);
+
 
 module.exports = router

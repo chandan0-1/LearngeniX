@@ -1,12 +1,9 @@
 let User = require("../models/user");
 const Doubt = require("../models/doubt");
 
-module.exports.activeDoubtsDummy = function (req, res) {
-  return res.render("mentor_active_doubts", {
-    title: "Active Doubts",
-  });
-};
 
+
+// Rendering the Mentor Homepage
 module.exports.home = async function (req, res) {
   let doubt = await Doubt.find({}).sort("-createdAt").populate("student");
   if (doubt) {
@@ -17,15 +14,18 @@ module.exports.home = async function (req, res) {
   }
 };
 
+
+module.exports.activeDoubtsDummy = function (req, res) {
+  return res.render("mentor_active_doubts", {
+    title: "Active Doubts",
+  });
+};
+
+
 // -------------Rendering the Dashboard Section of mentor----------
 module.exports.dashboard = async function (req, res) {
   let doubt = await Doubt.find({});
   let user = await User.find({});
-  // for (user of user){
-  //   if (user.type == 'mentor'){
-
-  //   }
-  // }
 
   var temp = 0;
   var resolved = 0;
@@ -67,7 +67,7 @@ module.exports.activeDoubts = function (req, res) {
 };
 
 module.exports.createAns = async function (req, res) {
-        req.flash("success", "Doubt Resolved Successfully !!");
+  req.flash("success", "Doubt Resolved Successfully !!");
 
   try {
     let doubt = await Doubt.findByIdAndUpdate(req.body.doubtID, {

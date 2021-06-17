@@ -1,7 +1,7 @@
 const express = require("express");
 const expressEjsLayouts = require("express-ejs-layouts");
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 const db = require("./config/mongoose");
 const session = require("express-session")
 const cookieParser = require("cookie-parser");

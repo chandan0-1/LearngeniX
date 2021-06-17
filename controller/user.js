@@ -2,14 +2,10 @@ let User = require("../models/user");
 let Doubt = require("../models/doubt")
 
 
-module.exports = function (req, res) {
-  return res.send("<h1> Hello from Mentor's Homepage!!</h1>");
-};
 
+// Rendering Dashobard of the student
 module.exports.dashboard =  function (req, res) {
-  // let doubt = await Doubt.find({});
-  
-
+ 
   Doubt.find({}).sort('-createdAt')
   .populate("student")
   .populate("mentor")
@@ -26,7 +22,6 @@ module.exports.dashboard =  function (req, res) {
         doubt: doubt,
       });
     }
-
   )
 };
 
@@ -36,6 +31,7 @@ module.exports.home = function (req, res) {
   });
 };
 
+// controller function to create the user in the DB
 module.exports.create = async function (req, res) {
   req.flash("success", "User created successfully!!");
 
@@ -66,18 +62,16 @@ module.exports.create = async function (req, res) {
 };
 
 
+// Controller function to Switch to the mentor and Student
 module.exports.contentSwitch = async function(req, res){
-
   req.flash("success", "Logged in Successfully!");
 
   let user = await  User.findOne({email : req.body.email});
-
   if (user && user.type == 'mentor'){
     return res.redirect("/mentor/home")
   }
   else{
     return res.redirect("/student/home");
-  }
-  
+  }  
 }
 
