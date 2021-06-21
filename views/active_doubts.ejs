@@ -31,7 +31,7 @@
 
         <p id = "asked-by">Asked by: <span id='user-name'><%= doubt.student.name %> </h2> </p>
         <span class="date">Raised on <%= doubt.createdAt.toLocaleDateString()%></span>
-        <span class="date"> at:<%= doubt.createdAt.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></span></br>
+        <span class="date"> at: <%= doubt.createdAt.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></span></br>
       </div>
       <br> 
 

@@ -14,7 +14,7 @@ module.exports.home = async function (req, res) {
   }
 };
 
-
+// Showing a Dummy Page
 module.exports.activeDoubtsDummy = function (req, res) {
   return res.render("mentor_active_doubts", {
     title: "Active Doubts",
@@ -66,6 +66,7 @@ module.exports.activeDoubts = function (req, res) {
 
 };
 
+// Controller function to resolve doubt with Answer
 module.exports.createAns = async function (req, res) {
   req.flash("success", "Doubt Resolved Successfully !!");
 
@@ -76,6 +77,7 @@ module.exports.createAns = async function (req, res) {
       mentor: req.user.id,
     });
 
+    // Updating the total resolved doubt by +1
     User.findById(req.user._id, function (err, user) {
       user.doubt.push(req.body.doubtID);
       user.save();
@@ -96,7 +98,7 @@ module.exports.createAns = async function (req, res) {
 module.exports.esclateDoubt = async function (req, res) {
   try {
 
-        req.flash("error", "Doubt Esclated !!");
+    req.flash("error", "Doubt Esclated !!");
 
     User.findById(req.user._id, function (err, user) {
       user.esclateDoubt.push(req.body.doubtID);
@@ -112,16 +114,23 @@ module.exports.esclateDoubt = async function (req, res) {
   }
 };
 
-
-module.exports.createSession = function (req, res) {
+// --creating the session for the mentor
+module.exports.createSession = async function (req, res) {
+  // if current user is not mentor then sending back for login
+  if (req.user.type == 'student'){
+    req.flash("error", "Curremt User is not a Mentor!");
+    req.logout();
+    return res.redirect('/login')
+  }
   req.flash("success", "Logged in Successfully!");
   return res.redirect("/mentor/home");
 };
 
+
+// to Logout the current User---------
 module.exports.destroySession = function (req, res) {
   req.logout();
   req.flash("success", "You have Logged out!");
-
   return res.redirect("/");
 };
 

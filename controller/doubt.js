@@ -18,7 +18,8 @@ module.exports.create = async function(req,res){
       }
     );
   }catch(err){
-    console.log("Error",err)
+    return res.status(501).json({
+    message: "Internal Server Error"})
   }
 }
 

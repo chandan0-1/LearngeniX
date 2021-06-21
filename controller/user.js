@@ -69,9 +69,15 @@ module.exports.create = async function (req, res) {
 
 // Controller function to Switch to the mentor and Student
 module.exports.contentSwitch = async function(req, res){
-  req.flash("success", "Logged in Successfully!");
-
+  
   let user = await  User.findOne({email : req.body.email});
+  
+  if (req.user.type == "mentor") {
+    req.flash("error", "Current User is not Student!");
+    req.logout();
+    return res.redirect("/login");
+  }
+  req.flash("success", "Logged in Successfully!");
   if (user && user.type == 'mentor'){
     return res.redirect("/mentor/home")
   }

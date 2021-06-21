@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
 
+    // Below both the field belongs to mentor's Dashboard
     doubt: [
       {
         type: mongoose.Schema.Types.ObjectId,

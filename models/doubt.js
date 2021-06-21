@@ -10,11 +10,13 @@ const doubtScheme = new mongoose.Schema(
       required: true,
     },
 
+    // Storing Who created the doubt
     student: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
 
+    // Storing who resolved the doubt
     mentor: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

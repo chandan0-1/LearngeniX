@@ -13,21 +13,17 @@ body {
   box-shadow: 0px 0px 15px rgb(59, 58, 56);
   border-radius: 10px;
   background: rgb(255, 255, 255);
-  /* background-color: rgb(213, 115, 216); */
 
 }
 form input {
   display: block;
-  margin: 7px;
-  width: 19vw;
+  margin-top: 20px;
+  width: 20vw;
   height: 30px;
-  /* border-radius: 4px; */
   border-width: 0px;
   font-family: "Montserrat", sans-serif;
   letter-spacing: 1px;
-  /* background: none; */
-  /* box-shadow: 0px 0px 5px rgb(206, 200, 200) inset; */
-  /* border: none; */
+  font-size: 1rem;
   border-bottom: solid 2px black ;
 
 }
@@ -35,8 +31,7 @@ form {
   margin-top: 10vh;
 }
 h1 {
-  /* margin-left: 80px; */
-  font-size: 1.7rem;
+  font-size: 2rem;
   color: rgb(78, 87, 87);
   letter-spacing: 2px;
   text-shadow: 0px 0px 15px rgb(138, 135, 135);
@@ -45,16 +40,17 @@ h1 {
 #button {
   background-color: rgb(9, 43, 75);
   color: white;
-  width: 19.3vw;
+  width: 20.3vw;
   padding: 3px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   height: 4vh;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
-  margin-top: 20px;
+  margin-top: 25px;
   border-radius: 5px;
   text-shadow: 0px 0px 2px white;
   border: none;
+  letter-spacing: 1px;
 
 }
 #google-auth {
