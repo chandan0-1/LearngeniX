@@ -15,6 +15,7 @@ const path = require("path");
 app.use(express.urlencoded());
 app.use(cookieParser());
 
+// Setting passport 
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
 

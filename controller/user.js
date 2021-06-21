@@ -33,14 +33,14 @@ module.exports.home = function (req, res) {
 
 // controller function to create the user in the DB
 module.exports.create = async function (req, res) {
-  req.flash("success", "User created successfully!!");
 
   if (req.body.password != req.body.confirm_password) {
-    console.log("wrong Creditionals!");
+  req.flash("error", "Password doesn't match!!");
     return res.redirect("back");
   }
   try {
     let user = await User.findOne({ email: req.body.email });
+    // if User is not Present in the DB
     if (!user) {
       User.create(
         {
@@ -50,11 +50,16 @@ module.exports.create = async function (req, res) {
           type: req.body.user_type
         },
         function (user) {
+          req.flash("success", "User created successfully!!");
+
           return res.redirect("/login");
         }
       );
+
+      // if user's Email is already in DB
     } else {
-      return res.redirect("back");
+        req.flash("error", "Email id is already taken !");
+        return res.redirect("back");
     }
   } catch (err) {
     console.log(err, "Internal Server error!!");

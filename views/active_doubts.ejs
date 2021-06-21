@@ -8,19 +8,23 @@
 </head>
 <body>
 <%- include('mentor_aside.ejs') %>
+<!----------------------Linking the CSS file ----------------------------->
+
 <link rel="stylesheet" href="/css/student_dashboard.css">
 
 
 
 
 
-
+<!-------------------------- This div have all the doubts who are active --------------------->
 <div id="doubt-cntnr">
       <li style="width: 70%;margin-left: 15%; margin-top: 30px;" id="doubt-box">
     <div class="inner-div">
         <h3 id="Title"><%= doubt.title %></h3>
 
-        <% (doubt.status = 'running') %>
+
+
+        <!------------------------ showing the doubt related data------------------------------>
 
         <label for="title">Description:</label></br>
         <p><%= doubt.description %></p>
@@ -29,9 +33,10 @@
         <span class="date">Raised on <%= doubt.createdAt.toLocaleDateString()%></span>
         <span class="date"> at:<%= doubt.createdAt.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></span></br>
       </div>
-      <br>
+      <br> 
 
 
+  <!------------------------ Looping over comment-------------------->
       <%for (comment of doubt.comments){ %>
         <div class="comment-cntnr">
             <span class="commenter"><%= comment.user.name %>:-</span>
@@ -41,6 +46,8 @@
         </div>
       <%}%>
 
+  <!------------------------ if current user is mentor then showing ans button-------------------->
+  
       <% if (locals.user.type == 'mentor'){ %>
       <form action="/mentor/create-ans" method="POST">
           <input class="comment-input" name="content" type="text" placeholder="Type the answer here....">
@@ -55,9 +62,6 @@
       </li>
       
 </div>
-
-
-
 
   
 </body>

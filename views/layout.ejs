@@ -7,37 +7,35 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet"/>
 
+  <style>
+    body{
+        background: #6190E8;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #A7BFE8, #6190E8);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #A7BFE8, #6190E8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+  </style>
 
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap"
-      rel="stylesheet"
-    />
+<%- style -%>
+
     
-    <style>
-      body{
-background: #6190E8;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #A7BFE8, #6190E8);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #A7BFE8, #6190E8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-      }
-    </style>
-  <%- style -%>
 </head>
 
 
 <body>
 
-  <%- include('_header') -%>
+    <%- include('_header') -%>
 
 
 
-  <%- body -%>
-  
-  <%- include('_footer') -%>
+    <%- body -%>
+    
+    <%- include('_footer') -%>
 
-  <%- script -%>
+    <%- script -%>
 
     <script>
       <% if(flash.success && flash.success.length > 0){ %>
